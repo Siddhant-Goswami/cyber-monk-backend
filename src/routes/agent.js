@@ -283,17 +283,23 @@ router.get('/status', (req, res) => {
 router.get('/workflows', (req, res) => {
   try {
     const { status, limit = 50 } = req.query;
-    
+    const limitNum = Math.min(Math.max(parseInt(limit, 10) || 50, 1), 1000);
+
     let workflows = Array.from(agentWorkflows.values());
-    
+
     if (status) {
       workflows = workflows.filter(w => w.status === status);
     }
-    
+
     workflows = workflows
       .sort((a, b) => new Date(b.lastUpdated || b.createdAt) - new Date(a.lastUpdated || a.createdAt))
-      .slice(0, parseInt(limit));
-    
+      .slice(0, limitNum);
+
+    res.status(200).json({
+      workflows,
+      total: workflows.length,
+      filtered: !!status
+    });
     res.status(200).json({
       workflows,
       total: workflows.length,
