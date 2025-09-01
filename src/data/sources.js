@@ -2,11 +2,11 @@
 let sources = [
   {
     id: 1,
-    name: "Tech Channel",
-    type: "YouTube",
-    url: "https://youtube.com/@techchannel",
+    name: "100x Engineers",
+    type: "YouTube", 
+    url: "https://youtube.com/@100xengineers",
     status: "active",
-    lastCrawled: "2024-01-15T10:30:00Z",
+    lastCrawled: null,
     icon: "youtube"
   },
   {
@@ -73,11 +73,29 @@ const updateStatus = (id, status) => {
   return source;
 };
 
+const updateLastCrawled = (id, timestamp) => {
+  const source = getById(id);
+  if (!source) return null;
+  
+  source.lastCrawled = timestamp;
+  return source;
+};
+
+const updateName = (id, name) => {
+  const source = getById(id);
+  if (!source) return null;
+  
+  source.name = name;
+  return source;
+};
+
 module.exports = {
   getAll,
   getById,
   create,
   update,
   deleteById,
-  updateStatus
+  updateStatus,
+  updateLastCrawled,
+  updateName
 };

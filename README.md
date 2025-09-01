@@ -37,8 +37,29 @@ The API will be available at `http://localhost:3001/v1`
 ### Analytics & Statistics
 - `GET /v1/stats/usage` - Usage statistics
 - `GET /v1/analytics/topics` - Topic analytics (supports ?status= filter)
-- `GET /v1/analytics/trends` - Trend data
+- `GET /v1/analytics/trends` - Trend data (cached)
+  - Optional: `?refresh=true` to force regeneration on-demand
+  - Optional: `?source_based=true` to use only source-derived trends
 - `GET /v1/analytics/efficiency` - Efficiency metrics
+- `POST /v1/analytics/refresh-trends` - Explicitly refresh trending topics now
+  - Optional: `?source_based=true` to use only source-derived trends
+
+Both trends endpoints return the same shape:
+
+```
+{
+  "trends": [
+    { "keyword": string, "growth": string, "category": string, "mentions": number }
+  ],
+  "trends_count": number,
+  "analysis_summary": {
+    "sources_analyzed": number,
+    "total_keywords_extracted": number,
+    "last_updated": string, // ISO timestamp
+    "real_data_sources": number // when applicable
+  }
+}
+```
 
 ### Delivery Management
 - `GET /v1/delivery/channels` - List delivery channels
