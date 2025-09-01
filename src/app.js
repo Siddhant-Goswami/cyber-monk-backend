@@ -10,6 +10,7 @@ const deliveryRouter = require('./routes/delivery');
 const userRouter = require('./routes/user');
 const twitterRouter = require('./routes/twitter-simple');
 const contentRouter = require('./routes/content');
+const agentRouter = require('./routes/agent');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -47,6 +48,7 @@ app.use('/v1/delivery', deliveryRouter);
 app.use('/v1/user', userRouter);
 app.use('/v1/twitter', twitterRouter);
 app.use('/v1/content', contentRouter);
+app.use('/api/agent', agentRouter);
 
 // 404 handler
 app.use('*', (req, res) => {
@@ -71,7 +73,7 @@ app.use((error, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Content Management Dashboard API server running on port ${PORT}`);
+  console.log(`🚀 Twitter Agent Backend API server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
   console.log(`📚 API Base URL: http://localhost:${PORT}/v1`);
   console.log('');
@@ -101,7 +103,7 @@ app.listen(PORT, () => {
   console.log('  POST   /v1/twitter/publish   - Publish project to Twitter');
   console.log('  POST   /v1/content/generate-drafts - Generate content drafts');
   console.log('  GET    /v1/content/drafts    - List content drafts');
-  console.log('  GET    /v1/content/stats     - Content statistics');
+  console.log('  GET    /v1/content/stats     - Content statistics');\n  console.log('');\n  console.log('Agent Integration:');\n  console.log('  POST   /api/agent/workflows        - Workflow notifications');\n  console.log('  POST   /api/agent/workflows/:id/status - Status updates');\n  console.log('  POST   /api/agent/tweets/posted   - Tweet posting notifications');\n  console.log('  POST   /api/agent/engagement      - Engagement metrics');\n  console.log('  GET    /api/agent/status          - Agent integration status');\n  console.log('  GET    /api/agent/workflows       - List all workflows');\n  console.log('  GET    /api/agent/engagement/report - Engagement analytics');
 });
 
 module.exports = app;
