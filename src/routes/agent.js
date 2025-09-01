@@ -319,26 +319,36 @@ router.get('/workflows', (req, res) => {
 // GET /api/agent/engagement/report - Get engagement analytics
 router.get('/engagement/report', (req, res) => {
   try {
-    const { days = 7, tweetId } = req.query;
-    
+    const { tweetId } = req.query;
+    let days = parseInt(req.query.days ?? 7, 10);
+    if (!Number.isFinite(days) || days <= 0) days = 7;
+    days = Math.min(days, 365);
+
     let metrics = Array.from(engagementMetrics.values());
-    
+
     if (tweetId) {
       metrics = metrics.filter(m => m.tweetId === tweetId);
     } else {
       const cutoffDate = new Date();
-      cutoffDate.setDate(cutoffDate.getDate() - parseInt(days));
+      cutoffDate.setDate(cutoffDate.getDate() - days);
       metrics = metrics.filter(m => new Date(m.timestamp) >= cutoffDate);
     }
-    
-    const totalLikes = metrics.reduce((sum, m) => sum + m.metrics.likes, 0);
-    const totalReposts = metrics.reduce((sum, m) => sum + m.metrics.reposts, 0);
-    const totalReplies = metrics.reduce((sum, m) => sum + m.metrics.replies, 0);
-    const totalViews = metrics.reduce((sum, m) => sum + m.metrics.views, 0);
-    
+
+-    const totalLikes = metrics.reduce((sum, m) => sum + m.metrics.likes, 0);
+-    const totalReposts = metrics.reduce((sum, m) => sum + m.metrics.reposts, 0);
+-    const totalReplies = metrics.reduce((sum, m) => sum + m.metrics.replies, 0);
+    const toNum = (v) => {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : 0;
+    };
+    const totalLikes = metrics.reduce((sum, m) => sum + toNum(m.metrics.likes), 0);
+    const totalReposts = metrics.reduce((sum, m) => sum + toNum(m.metrics.reposts), 0);
+    const totalReplies = metrics.reduce((sum, m) => sum + toNum(m.metrics.replies), 0);
+    const totalViews = metrics.reduce((sum, m) => sum + toNum(m.metrics.views), 0);
+
     res.status(200).json({
       report: {
-        period_days: parseInt(days),
+        period_days: days,
         tweets_tracked: metrics.length,
         total_engagement: {
           likes: totalLikes,
