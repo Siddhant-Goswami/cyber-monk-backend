@@ -1,6 +1,6 @@
-# Content Management Dashboard API
+# Twitter Agent Backend - AI-Powered Social Media Intelligence Platform
 
-A simplified MVP implementation of a Content Management Dashboard API with in-memory data storage.
+A sophisticated backend system for Twitter automation, content intelligence, and social media analytics with real-time trend analysis and AI-powered content generation.
 
 ## Quick Start
 
@@ -17,57 +17,71 @@ npm run dev
 
 The API will be available at `http://localhost:3001/v1`
 
+## Core Features
+
+### 🤖 Twitter Agent Integration
+- Real-time workflow notifications from local Twitter agents
+- Tweet posting status tracking and analytics
+- Engagement metrics collection and reporting
+- Agent health monitoring and status updates
+
+### 📊 Content Intelligence
+- YouTube channel crawling and video analysis
+- Multi-source trend aggregation and analysis
+- AI-powered content generation based on trending topics
+- Real-time keyword extraction and trend scoring
+
+### 🚀 Social Media Automation
+- Twitter posting and thread management
+- Content formatting and optimization
+- Automated hashtag placement
+- Publishing workflow management
+
 ## API Endpoints
 
 ### Health Check
 - `GET /health` - Server health status
 
-### Sources Management
-- `GET /v1/sources` - List all sources
-- `POST /v1/sources` - Create new source
-- `PUT /v1/sources/:id/status` - Update source status
-- `DELETE /v1/sources/:id` - Delete source
+### Agent Integration (New)
+- `POST /api/agent/workflows` - Receive workflow start notifications
+- `POST /api/agent/workflows/:id/status` - Receive workflow status updates
+- `POST /api/agent/tweets/posted` - Receive tweet posting notifications
+- `POST /api/agent/engagement` - Receive engagement metrics
+- `GET /api/agent/status` - Get agent integration status
 
-### Projects Management
-- `GET /v1/projects` - List all projects
-- `POST /v1/projects` - Create new project
+### Twitter Automation
+- `POST /v1/twitter/tweet` - Post individual tweets
+- `POST /v1/twitter/thread` - Create Twitter threads
+- `POST /v1/twitter/publish` - Publish project content to Twitter
+- `GET /v1/twitter/status` - Twitter connection health
+
+### Content Intelligence
+- `GET /v1/sources` - List content sources (YouTube, RSS, etc.)
+- `POST /v1/sources` - Add new content source
+- `POST /v1/sources/crawl` - Trigger batch crawling
+- `PUT /v1/sources/:id/status` - Update source status
+- `DELETE /v1/sources/:id` - Remove source
+
+### Analytics & Trends
+- `GET /v1/analytics/topics` - Topic analytics with filtering
+- `GET /v1/analytics/trends` - Real-time trend analysis
+  - `?refresh=true` - Force trend regeneration
+  - `?source_based=true` - Use only source-derived trends
+- `POST /v1/analytics/refresh-trends` - Manually refresh trends
+- `GET /v1/analytics/efficiency` - Performance metrics
+- `GET /v1/stats/usage` - Usage statistics
+
+### Project Management
+- `GET /v1/projects` - List projects
+- `POST /v1/projects` - Create project
 - `PUT /v1/projects/:id` - Update project
 - `DELETE /v1/projects/:id` - Delete project
 
-### Analytics & Statistics
-- `GET /v1/stats/usage` - Usage statistics
-- `GET /v1/analytics/topics` - Topic analytics (supports ?status= filter)
-- `GET /v1/analytics/trends` - Trend data (cached)
-  - Optional: `?refresh=true` to force regeneration on-demand
-  - Optional: `?source_based=true` to use only source-derived trends
-- `GET /v1/analytics/efficiency` - Efficiency metrics
-- `POST /v1/analytics/refresh-trends` - Explicitly refresh trending topics now
-  - Optional: `?source_based=true` to use only source-derived trends
-
-Both trends endpoints return the same shape:
-
-```
-{
-  "trends": [
-    { "keyword": string, "growth": string, "category": string, "mentions": number }
-  ],
-  "trends_count": number,
-  "analysis_summary": {
-    "sources_analyzed": number,
-    "total_keywords_extracted": number,
-    "last_updated": string, // ISO timestamp
-    "real_data_sources": number // when applicable
-  }
-}
-```
-
-### Delivery Management
-- `GET /v1/delivery/channels` - List delivery channels
-- `POST /v1/delivery/publish` - Publish content (mock)
-
-### User Management
-- `GET /v1/user/profile` - Get user profile
-- `PUT /v1/user/profile` - Update user profile
+### Content & Delivery
+- `GET /v1/delivery/channels` - Available delivery channels
+- `POST /v1/delivery/publish` - Publish content
+- `GET /v1/user/profile` - User profile
+- `PUT /v1/user/profile` - Update profile
 
 ## Example Usage
 
@@ -90,21 +104,57 @@ curl -X GET "http://localhost:3001/v1/analytics/topics?status=accepted"
 
 ## Features
 
+### Twitter Agent Integration
+- ✅ Real-time webhook support for local Twitter agents
+- ✅ Workflow status tracking and notifications
+- ✅ Tweet posting confirmation and analytics
+- ✅ Engagement metrics collection
+
+### Content Intelligence
+- ✅ YouTube channel monitoring and video crawling
+- ✅ Multi-source trend aggregation (YouTube, RSS, Twitter)
+- ✅ AI-powered keyword extraction and analysis
+- ✅ Real-time trend analysis with caching
+- ✅ Content generation based on trending topics
+
+### Social Media Automation
+- ✅ Twitter posting with thread support
+- ✅ Content formatting and optimization
+- ✅ Automated hashtag placement
+- ✅ Character limit validation
+
+### System Features
 - ✅ Full CRUD operations for sources and projects
-- ✅ Mock analytics data with realistic examples
-- ✅ Input validation and error handling
-- ✅ CORS enabled for frontend access
-- ✅ In-memory data persistence (during server runtime)
-- ✅ Request logging
-- ✅ Proper HTTP status codes
+- ✅ Advanced analytics with filtering and insights
+- ✅ Input validation and comprehensive error handling
+- ✅ CORS enabled for frontend integration
+- ✅ In-memory data persistence with mock fallbacks
+- ✅ Detailed request logging and monitoring
+- ✅ Proper HTTP status codes and structured responses
 
 ## Architecture
 
-- **Framework**: Express.js 4.x
-- **Data Storage**: In-memory JavaScript objects/arrays
-- **Validation**: Custom validation functions
-- **Error Handling**: Centralized error responses
-- **CORS**: Enabled for common frontend ports
+### Backend Stack
+- **Framework**: Express.js 4.x with RESTful API design
+- **Data Storage**: In-memory JavaScript objects with mock fallbacks
+- **External APIs**: YouTube RSS feeds, Twitter API integration
+- **Caching**: TTL-based caching for trend data (10-minute refresh)
+- **Validation**: Custom validation with comprehensive error handling
+- **Logging**: Structured request/response logging
+- **CORS**: Configured for frontend and agent integration
+
+### Content Intelligence Pipeline
+1. **Data Ingestion**: Crawls YouTube channels and RSS feeds
+2. **Processing**: Extracts keywords and analyzes trends
+3. **AI Generation**: Creates content based on trending topics
+4. **Social Distribution**: Formats and posts to Twitter
+5. **Analytics**: Tracks performance and provides insights
+
+### Agent Integration
+- **Webhook Support**: Real-time notifications from local agents
+- **Status Tracking**: Comprehensive workflow monitoring
+- **Metrics Collection**: Engagement and performance analytics
+- **Health Monitoring**: Agent connectivity and status checks
 
 ## Project Structure
 
