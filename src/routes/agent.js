@@ -20,6 +20,23 @@ router.post('/workflows', (req, res) => {
       });
     }
 
+    if (!Array.isArray(topics) || topics.some(t => typeof t !== 'string')) {
+      return res.status(400).json({
+        error: { code: 'INVALID_REQUEST', message: 'Field "topics" must be an array of strings' }
+      });
+    }
+    const ts = new Date(timestamp);
+    if (Number.isNaN(ts.getTime())) {
+      return res.status(400).json({
+        error: { code: 'INVALID_REQUEST', message: 'Invalid timestamp' }
+      });
+    }
+
+    // …rest of handler…
+  } catch (err) {
+    // …
+  }
+});
     const workflow = {
       id: workflowId,
       trigger,
