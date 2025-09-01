@@ -1,0 +1,32 @@
+🚀 Content Management Dashboard API server running on port 3055
+📍 Health check: http://localhost:3055/health
+📚 API Base URL: http://localhost:3055/v1
+
+Available endpoints:
+  GET    /v1/sources           - List all sources
+  POST   /v1/sources           - Create new source
+  PUT    /v1/sources/:id/status - Update source status
+  DELETE /v1/sources/:id       - Delete source
+  POST   /v1/sources/:id/crawl - Crawl specific source
+  POST   /v1/sources/crawl-all - Crawl all active sources
+  GET    /v1/projects          - List all projects
+  POST   /v1/projects          - Create new project
+  PUT    /v1/projects/:id      - Update project
+  DELETE /v1/projects/:id      - Delete project
+  GET    /v1/stats/usage       - Usage statistics
+  GET    /v1/analytics/topics  - Topic analytics
+  GET    /v1/analytics/trends  - Trend data
+  GET    /v1/analytics/efficiency - Efficiency metrics
+  POST   /v1/analytics/refresh-trends - Refresh trending topics
+  GET    /v1/delivery/channels - Delivery channels
+  POST   /v1/delivery/publish  - Publish content
+  GET    /v1/user/profile      - User profile
+  PUT    /v1/user/profile      - Update user profile
+  GET    /v1/twitter/status    - Check Twitter connection
+  POST   /v1/twitter/tweet     - Post single tweet
+  POST   /v1/twitter/thread    - Post Twitter thread
+  POST   /v1/twitter/publish   - Publish project to Twitter
+  POST   /v1/content/generate-drafts - Generate content drafts
+  GET    /v1/content/drafts    - List content drafts
+  GET    /v1/content/stats     - Content statistics
+2025-08-28T12:51:58.243Z - GET /health

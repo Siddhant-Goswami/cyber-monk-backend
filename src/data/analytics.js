@@ -109,8 +109,8 @@ const deliveryChannels = [
     id: 3,
     name: "Twitter",
     type: "social",
-    status: "error",
-    lastSync: "2024-01-14T15:45:00Z"
+    status: "connected",
+    lastSync: new Date().toISOString()
   }
 ];
 

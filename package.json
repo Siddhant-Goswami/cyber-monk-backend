@@ -7,12 +7,21 @@
     "dev": "node --watch src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["api", "cms", "content-management", "dashboard", "express", "rest-api", "mvp"],
+  "keywords": [
+    "api",
+    "cms",
+    "content-management",
+    "dashboard",
+    "express",
+    "rest-api",
+    "mvp"
+  ],
   "author": "Siddhant Goswami",
   "license": "ISC",
   "description": "Content Management Dashboard API - MVP implementation with Express.js and in-memory storage for rapid prototyping and development",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "fast-xml-parser": "^5.2.5"
   }
 }

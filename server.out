@@ -1,0 +1,593 @@
+🚀 Content Management Dashboard API server running on port 3001
+📍 Health check: http://localhost:3001/health
+📚 API Base URL: http://localhost:3001/v1
+
+Available endpoints:
+  GET    /v1/sources           - List all sources
+  POST   /v1/sources           - Create new source
+  PUT    /v1/sources/:id/status - Update source status
+  DELETE /v1/sources/:id       - Delete source
+  POST   /v1/sources/:id/crawl - Crawl specific source
+  POST   /v1/sources/crawl-all - Crawl all active sources
+  GET    /v1/projects          - List all projects
+  POST   /v1/projects          - Create new project
+  PUT    /v1/projects/:id      - Update project
+  DELETE /v1/projects/:id      - Delete project
+  GET    /v1/stats/usage       - Usage statistics
+  GET    /v1/analytics/topics  - Topic analytics
+  GET    /v1/analytics/trends  - Trend data
+  GET    /v1/analytics/efficiency - Efficiency metrics
+  POST   /v1/analytics/refresh-trends - Refresh trending topics
+  GET    /v1/delivery/channels - Delivery channels
+  POST   /v1/delivery/publish  - Publish content
+  GET    /v1/user/profile      - User profile
+  PUT    /v1/user/profile      - Update user profile
+  GET    /v1/twitter/status    - Check Twitter connection
+  POST   /v1/twitter/tweet     - Post single tweet
+  POST   /v1/twitter/thread    - Post Twitter thread
+  POST   /v1/twitter/publish   - Publish project to Twitter
+  POST   /v1/content/generate-drafts - Generate content drafts
+  GET    /v1/content/drafts    - List content drafts
+  GET    /v1/content/stats     - Content statistics
+2025-08-28T13:36:24.791Z - GET /v1/sources
+2025-08-28T13:37:31.320Z - GET /v1/stats/usage
+2025-08-28T13:37:31.323Z - GET /v1/content/drafts
+2025-08-28T13:37:31.326Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16535 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "AI generated RDR2 before GTA6"
+📈 Trending Keywords: 2025 (+212%), code (+65%), trend (+249%)
+2025-08-28T13:39:52.384Z - GET /v1/sources
+2025-08-28T13:39:56.093Z - GET /v1/stats/usage
+2025-08-28T13:39:56.095Z - GET /v1/analytics/trends
+2025-08-28T13:39:56.099Z - GET /v1/content/drafts
+2025-08-28T13:40:04.226Z - GET /v1/sources
+2025-08-28T13:40:07.579Z - PUT /v1/sources/2/status
+2025-08-28T13:40:10.748Z - GET /v1/content/drafts
+2025-08-28T13:40:10.753Z - GET /v1/stats/usage
+2025-08-28T13:40:10.755Z - GET /v1/analytics/trends
+2025-08-28T13:40:13.579Z - GET /v1/sources
+2025-08-28T13:40:15.178Z - GET /v1/stats/usage
+2025-08-28T13:40:15.179Z - GET /v1/content/drafts
+2025-08-28T15:09:15.534Z - GET /v1/sources
+2025-08-28T15:09:18.896Z - GET /v1/stats/usage
+2025-08-28T15:09:18.905Z - GET /v1/content/drafts
+2025-08-28T15:09:22.618Z - POST /v1/analytics/refresh-trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16536 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "AI generated RDR2 before GTA6"
+📈 Trending Keywords: 2025 (+54%), code (+198%), trend (+140%)
+2025-08-28T15:16:14.675Z - GET /v1/stats/usage
+2025-08-28T15:16:14.677Z - GET /v1/content/drafts
+2025-08-28T15:16:14.679Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16536 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "AI generated RDR2 before GTA6"
+📈 Trending Keywords: 2025 (+80%), code (+78%), trend (+160%)
+2025-08-28T15:16:19.941Z - GET /v1/sources
+2025-08-28T15:16:22.318Z - PUT /v1/sources/1/status
+2025-08-28T15:16:26.605Z - PUT /v1/sources/1/status
+2025-08-28T15:16:47.736Z - GET /v1/stats/usage
+2025-08-28T15:16:47.738Z - GET /v1/content/drafts
+2025-08-28T15:16:53.167Z - GET /v1/analytics/trends
+2025-08-28T15:16:54.498Z - POST /v1/analytics/refresh-trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16536 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "AI generated RDR2 before GTA6"
+📈 Trending Keywords: 2025 (+155%), code (+170%), trend (+242%)
+2025-08-28T15:17:28.165Z - GET /v1/sources
+2025-08-28T15:17:59.417Z - PUT /v1/sources/1/status
+2025-08-28T15:18:04.718Z - GET /health
+2025-08-28T15:18:04.727Z - POST /v1/sources
+2025-08-28T15:18:09.933Z - GET /v1/stats/usage
+2025-08-28T15:18:09.934Z - GET /v1/content/drafts
+2025-08-28T15:18:15.161Z - POST /v1/analytics/refresh-trends
+2025-08-28T15:18:18.926Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-28T15:18:19.149Z - GET /v1/content/drafts
+2025-08-28T15:20:20.704Z - GET /v1/analytics/trends
+2025-08-28T15:20:20.707Z - GET /v1/stats/usage
+2025-08-28T15:20:20.712Z - GET /v1/content/drafts
+2025-08-28T15:20:21.229Z - GET /v1/content/drafts
+2025-08-28T15:20:21.229Z - GET /v1/stats/usage
+2025-08-28T15:20:21.231Z - GET /v1/analytics/trends
+2025-08-28T15:20:27.429Z - GET /v1/content/drafts
+2025-08-28T15:20:33.874Z - GET /v1/content/drafts
+2025-08-28T15:20:39.267Z - GET /v1/content/drafts
+2025-08-28T15:20:39.268Z - GET /v1/stats/usage
+2025-08-28T15:20:39.268Z - GET /v1/analytics/trends
+2025-08-28T15:20:48.798Z - GET /v1/content/drafts
+2025-08-28T15:21:10.739Z - GET /v1/content/drafts
+2025-08-28T15:21:10.741Z - GET /v1/analytics/trends
+2025-08-28T15:21:10.744Z - GET /v1/stats/usage
+2025-08-28T15:21:12.354Z - GET /v1/sources
+2025-08-28T15:21:14.898Z - GET /v1/stats/usage
+2025-08-28T15:21:14.899Z - GET /v1/content/drafts
+2025-08-28T15:21:17.434Z - POST /v1/analytics/refresh-trends
+2025-08-28T15:21:19.308Z - GET /v1/analytics/trends
+2025-08-28T15:21:19.316Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-28T15:21:19.543Z - GET /v1/content/drafts
+2025-08-28T15:22:05.313Z - GET /v1/content/drafts
+2025-08-28T15:22:05.314Z - GET /v1/stats/usage
+2025-08-28T15:22:05.315Z - GET /v1/analytics/trends
+2025-08-28T15:22:20.316Z - GET /v1/content/drafts
+2025-08-28T15:26:31.302Z - GET /v1/stats/usage
+2025-08-28T15:26:31.302Z - GET /v1/content/drafts
+2025-08-28T15:26:31.303Z - GET /v1/analytics/trends
+2025-08-28T15:26:38.885Z - POST /v1/analytics/refresh-trends
+2025-08-28T15:26:44.881Z - GET /v1/analytics/trends
+2025-08-28T15:26:44.894Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-28T15:26:45.111Z - GET /v1/content/drafts
+2025-08-28T15:27:41.785Z - GET /v1/content/drafts
+2025-08-28T15:27:57.554Z - GET /v1/content/drafts
+2025-08-28T15:53:10.985Z - GET /v1/content/drafts
+2025-08-28T15:53:10.987Z - GET /v1/stats/usage
+2025-08-28T15:53:10.987Z - GET /v1/analytics/trends
+2025-08-28T16:05:49.018Z - GET /v1/stats/usage
+2025-08-28T16:05:49.020Z - GET /v1/analytics/trends
+2025-08-28T16:05:49.021Z - GET /v1/content/drafts
+2025-08-28T16:13:15.158Z - GET /v1/stats/usage
+2025-08-28T16:13:15.161Z - GET /v1/analytics/trends
+2025-08-28T16:13:15.163Z - GET /v1/content/drafts
+2025-08-28T16:18:54.001Z - GET /v1/content/drafts
+2025-08-28T16:18:54.004Z - GET /v1/stats/usage
+2025-08-28T16:18:54.004Z - GET /v1/analytics/trends
+2025-08-28T16:23:49.449Z - GET /v1/stats/usage
+2025-08-28T16:23:49.451Z - GET /v1/content/drafts
+2025-08-28T16:23:49.451Z - GET /v1/analytics/trends
+2025-08-28T16:35:44.323Z - GET /v1/stats/usage
+2025-08-28T16:35:44.326Z - GET /v1/content/drafts
+2025-08-28T16:35:44.329Z - GET /v1/analytics/trends
+2025-08-28T16:35:47.020Z - GET /v1/sources
+2025-08-28T16:35:50.666Z - PUT /v1/sources/1/status
+2025-08-28T16:35:52.390Z - GET /v1/stats/usage
+2025-08-28T16:35:52.391Z - GET /v1/content/drafts
+2025-08-28T16:35:59.290Z - GET /v1/stats/usage
+2025-08-28T16:35:59.293Z - GET /v1/content/drafts
+2025-08-28T16:35:59.295Z - GET /v1/analytics/trends
+2025-08-28T16:36:00.847Z - POST /v1/analytics/refresh-trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+118%), code (+152%), trend (+229%)
+2025-08-28T16:36:07.043Z - GET /v1/analytics/trends
+2025-08-28T16:36:07.053Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-28T16:36:07.268Z - GET /v1/content/drafts
+2025-08-28T16:36:08.482Z - GET /v1/content/drafts
+2025-08-28T16:36:09.703Z - GET /v1/content/drafts
+2025-08-28T16:36:10.918Z - GET /v1/content/drafts
+2025-08-28T16:36:12.137Z - GET /v1/content/drafts
+2025-08-28T16:36:13.351Z - GET /v1/content/drafts
+2025-08-28T16:36:14.569Z - GET /v1/content/drafts
+2025-08-28T16:36:15.791Z - GET /v1/content/drafts
+2025-08-28T16:36:17.014Z - GET /v1/content/drafts
+2025-08-28T16:37:54.825Z - GET /v1/content/drafts
+2025-08-28T16:38:02.253Z - GET /v1/stats/usage
+2025-08-28T16:38:02.254Z - GET /v1/analytics/trends
+2025-08-28T16:38:02.255Z - GET /v1/content/drafts
+2025-08-28T16:38:02.255Z - GET /v1/analytics/trends
+2025-08-28T16:39:43.193Z - GET /v1/stats/usage
+2025-08-28T16:39:43.194Z - GET /v1/content/drafts
+2025-08-28T16:39:43.195Z - GET /v1/analytics/trends
+2025-08-28T16:39:43.196Z - GET /v1/analytics/trends
+2025-08-28T16:40:23.447Z - GET /v1/stats/usage
+2025-08-28T16:40:23.449Z - GET /v1/content/drafts
+2025-08-28T16:40:23.450Z - GET /v1/analytics/trends
+2025-08-28T16:40:23.450Z - GET /v1/analytics/trends
+2025-08-28T16:40:28.560Z - GET /v1/sources
+2025-08-28T16:40:30.789Z - GET /v1/content/drafts
+2025-08-28T16:40:30.793Z - GET /v1/analytics/trends
+2025-08-28T16:40:30.798Z - GET /v1/stats/usage
+2025-08-28T16:42:35.575Z - GET /v1/stats/usage
+2025-08-28T16:42:44.573Z - GET /v1/stats/usage
+2025-08-28T16:43:18.609Z - GET /v1/content/drafts
+2025-08-28T16:43:18.610Z - GET /v1/stats/usage
+2025-08-28T16:43:18.611Z - GET /v1/analytics/trends
+2025-08-28T16:43:18.612Z - GET /v1/analytics/trends
+2025-08-28T16:47:49.406Z - GET /v1/stats/usage
+2025-08-28T16:47:49.408Z - GET /v1/content/drafts
+2025-08-28T16:47:49.411Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T16:47:49.431Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+109%), code (+197%), trend (+154%)
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+184%), code (+245%), trend (+165%)
+2025-08-28T16:48:51.467Z - GET /v1/analytics/trends
+2025-08-28T16:48:51.468Z - GET /v1/content/drafts
+2025-08-28T16:48:51.469Z - GET /v1/analytics/trends
+2025-08-28T16:49:14.869Z - GET /v1/analytics/trends
+2025-08-28T16:49:14.871Z - GET /v1/analytics/trends
+2025-08-28T16:49:14.872Z - GET /v1/content/drafts
+2025-08-28T16:49:16.559Z - POST /v1/analytics/refresh-trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+127%), code (+158%), trend (+104%)
+2025-08-28T16:49:19.147Z - GET /v1/analytics/trends
+2025-08-28T16:49:19.156Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-28T16:49:19.370Z - GET /v1/content/drafts
+2025-08-28T16:50:23.578Z - GET /v1/content/drafts
+2025-08-28T17:10:32.635Z - GET /v1/content/drafts
+2025-08-28T17:10:32.638Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T17:10:32.644Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+51%), code (+61%), trend (+188%)
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+107%), code (+161%), trend (+187%)
+2025-08-28T17:18:07.419Z - GET /v1/content/drafts
+2025-08-28T17:18:07.422Z - GET /v1/analytics/trends
+2025-08-28T17:18:07.425Z - GET /v1/analytics/trends
+2025-08-28T17:24:46.527Z - GET /v1/content/drafts
+2025-08-28T17:24:46.529Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T17:24:46.535Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+210%), code (+243%), trend (+86%)
+📄 RSS feed fetched successfully (16427 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+218%), code (+209%), trend (+55%)
+2025-08-28T17:33:10.349Z - GET /v1/content/drafts
+2025-08-28T17:33:10.352Z - GET /v1/analytics/trends
+2025-08-28T17:33:10.354Z - GET /v1/analytics/trends
+2025-08-28T17:47:46.075Z - GET /v1/content/drafts
+2025-08-28T17:47:46.077Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T17:47:46.080Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+94%), code (+182%), trend (+77%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+175%), code (+93%), trend (+243%)
+2025-08-28T17:55:59.610Z - GET /v1/analytics/trends
+2025-08-28T17:55:59.612Z - GET /v1/content/drafts
+2025-08-28T17:55:59.614Z - GET /v1/analytics/trends
+2025-08-28T18:03:34.351Z - GET /v1/content/drafts
+2025-08-28T18:03:34.356Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T18:03:34.361Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+60%), code (+79%), trend (+227%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+107%), code (+62%), trend (+82%)
+2025-08-28T18:12:39.259Z - GET /v1/content/drafts
+2025-08-28T18:12:39.265Z - GET /v1/analytics/trends
+2025-08-28T18:12:39.275Z - GET /v1/analytics/trends
+2025-08-28T18:22:28.770Z - GET /v1/content/drafts
+2025-08-28T18:22:28.773Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T18:22:28.782Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+79%), code (+211%), trend (+171%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+211%), code (+144%), trend (+102%)
+2025-08-28T18:25:10.831Z - GET /v1/content/drafts
+2025-08-28T18:25:10.833Z - GET /v1/analytics/trends
+2025-08-28T18:25:10.834Z - GET /v1/analytics/trends
+2025-08-28T18:46:47.885Z - GET /v1/content/drafts
+2025-08-28T18:46:47.889Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T18:46:47.900Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+50%), code (+171%), trend (+68%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+124%), code (+105%), trend (+178%)
+2025-08-28T18:46:48.834Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T18:46:48.848Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+227%), code (+228%), trend (+100%)
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-28T18:46:49.061Z - GET /v1/content/drafts
+2025-08-28T18:47:56.005Z - GET /v1/content/drafts
+2025-08-28T18:50:02.012Z - GET /v1/content/drafts
+2025-08-28T18:50:02.013Z - GET /v1/analytics/trends
+2025-08-28T18:50:02.018Z - GET /v1/analytics/trends
+2025-08-28T19:02:00.941Z - GET /v1/content/drafts
+2025-08-28T19:02:00.943Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T19:02:00.953Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+136%), code (+205%), trend (+118%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+157%), code (+114%), trend (+124%)
+2025-08-28T19:30:35.288Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T19:30:35.296Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T19:30:35.303Z - GET /v1/content/drafts
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+106%), code (+93%), trend (+188%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+216%), code (+170%), trend (+156%)
+2025-08-28T20:41:38.482Z - GET /v1/content/drafts
+2025-08-28T20:41:38.486Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-28T20:41:38.492Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+213%), code (+202%), trend (+95%)
+📄 RSS feed fetched successfully (16428 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+196%), code (+159%), trend (+100%)
+2025-08-29T05:23:22.375Z - GET /v1/content/drafts
+2025-08-29T05:23:22.381Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-29T05:23:22.387Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+60%), code (+201%), trend (+78%)
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+189%), code (+144%), trend (+232%)
+2025-08-29T05:23:27.170Z - GET /v1/analytics/trends
+2025-08-29T05:23:27.181Z - POST /v1/content/generate-drafts
+🚀 Generating 5 content drafts...
+📊 Analyzing connected sources...
+   ▸ YouTube: 1,250 trending videos processed
+   ▸ RSS Feeds: 450 articles analyzed
+   ▸ Twitter: 2,800 trending tweets processed
+   ▸ Engagement patterns analyzed
+✅ Successfully generated 5 drafts
+2025-08-29T05:23:27.398Z - GET /v1/content/drafts
+2025-08-29T05:24:43.946Z - GET /v1/analytics/topics
+2025-08-29T05:24:43.953Z - GET /v1/analytics/efficiency
+2025-08-29T05:24:43.956Z - GET /v1/analytics/trends
+2025-08-29T05:24:50.363Z - GET /v1/analytics/trends
+2025-08-29T05:24:50.367Z - GET /v1/content/drafts
+2025-08-29T05:24:50.370Z - GET /v1/analytics/trends
+2025-08-29T05:28:17.291Z - GET /v1/analytics/trends
+2025-08-29T05:28:17.292Z - GET /v1/analytics/trends
+2025-08-29T05:28:17.292Z - GET /v1/content/drafts
+2025-08-29T05:37:47.046Z - GET /v1/content/drafts
+2025-08-29T05:37:47.050Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-29T05:37:47.055Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+65%), code (+155%), trend (+67%)
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+92%), code (+190%), trend (+150%)
+2025-08-29T05:40:15.010Z - GET /v1/content/drafts
+2025-08-29T05:40:15.026Z - GET /v1/analytics/trends
+2025-08-29T05:40:15.027Z - GET /v1/analytics/trends
+2025-08-29T05:53:30.958Z - GET /v1/sources
+2025-08-29T05:53:36.320Z - GET /v1/sources
+2025-08-29T06:02:45.368Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-29T06:02:45.375Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-29T06:02:45.382Z - GET /v1/content/drafts
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+58%), code (+223%), trend (+114%)
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+61%), code (+232%), trend (+127%)
+2025-08-29T06:06:30.407Z - GET /v1/content/drafts
+2025-08-29T06:06:30.409Z - GET /v1/analytics/trends
+2025-08-29T06:06:30.410Z - GET /v1/analytics/trends
+2025-08-29T06:19:05.743Z - GET /v1/content/drafts
+2025-08-29T06:19:05.758Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+2025-08-29T06:19:05.763Z - GET /v1/analytics/trends
+🔍 Crawling YouTube channel: https://youtube.com/@100xengineers
+🔍 Resolving username: @100xengineers
+✅ Found channel ID for @100xengineers: UCoch_d78Aosmp14ey1HgGSQ
+📡 Fetching RSS feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCoch_d78Aosmp14ey1HgGSQ
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+152%), code (+77%), trend (+104%)
+📄 RSS feed fetched successfully (16429 chars)
+✅ Successfully crawled 100x Engineers: 15 videos found
+📈 Latest video: "Name Banana"
+📈 Trending Keywords: 2025 (+233%), code (+50%), trend (+176%)
+2025-08-29T06:22:14.844Z - GET /v1/analytics/trends
+2025-08-29T06:22:14.845Z - GET /v1/content/drafts
+2025-08-29T06:22:14.847Z - GET /v1/analytics/trends

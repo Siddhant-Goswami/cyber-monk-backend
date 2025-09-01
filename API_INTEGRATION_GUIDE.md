@@ -340,20 +340,26 @@ GET /v1/analytics/topics?status=accepted&timeRange=7d
 
 #### Get Trends Data
 ```
-GET /v1/analytics/trends
+GET /v1/analytics/trends?refresh=true&source_based=true
 ```
+
+**Query Parameters:**
+- `refresh` (optional): `true` to force regeneration; otherwise returns cached data and triggers background refresh if stale.
+- `source_based` (optional): `true` to ensure trends are derived from real/source crawling (no fabricated mock additions).
 
 **Response:**
 ```json
 {
-  "trending": [
-    {
-      "topic": "AI Development",
-      "score": 95,
-      "change": "+15%",
-      "category": "Technology"
-    }
-  ]
+  "trends": [
+    { "keyword": "ai", "growth": "+120%", "category": "Technology", "mentions": 8 }
+  ],
+  "trends_count": 12,
+  "analysis_summary": {
+    "sources_analyzed": 2,
+    "total_keywords_extracted": 12,
+    "last_updated": "2024-08-28T12:34:56.000Z",
+    "real_data_sources": 1
+  }
 }
 ```
 
