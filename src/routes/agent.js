@@ -72,15 +72,36 @@ router.post('/workflows/:id/status', (req, res) => {
     const { id: workflowId } = req.params;
     const { status, currentStep, metadata } = req.body;
     
-    if (!workflowId || !status) {
+    // Only status is required in the body; workflowId comes from the URL.
+    if (!status) {
       return res.status(400).json({
         error: {
           code: 'INVALID_REQUEST',
-          message: 'Missing required fields: workflowId, status'
+          message: 'Missing required field: status'
         }
       });
     }
 
+    // Constrain status to known, allowed values.
+    const ALLOWED_STATUSES = new Set([
+      'started',
+      'researching',
+      'drafting',
+      'awaiting_approval',
+      'posted',
+      'approved',
+      'failed'
+    ]);
+    if (!ALLOWED_STATUSES.has(status)) {
+      return res.status(400).json({
+        error: {
+          code: 'INVALID_REQUEST',
+          message: `Invalid status: ${status}`
+        }
+      });
+    }
+
+    // ...rest of the handler...
     const workflow = agentWorkflows.get(workflowId);
     if (!workflow) {
       return res.status(404).json({
