@@ -1,6 +1,6 @@
-# Content Management Dashboard API
+# Twitter Agent Backend API
 
-A simplified MVP implementation of a Content Management Dashboard API with in-memory data storage.
+A comprehensive Twitter Agent backend with content management, analytics, and automated Twitter publishing capabilities. Features include content sourcing, trend analysis, and intelligent Twitter thread generation.
 
 ## Quick Start
 
@@ -69,6 +69,14 @@ Both trends endpoints return the same shape:
 - `GET /v1/user/profile` - Get user profile
 - `PUT /v1/user/profile` - Update user profile
 
+### Twitter Integration
+- `GET /v1/twitter/status` - Check Twitter connection status
+- `POST /v1/twitter/debug` - Debug endpoint for testing
+- `POST /v1/twitter/post` - Post a single tweet
+- `POST /v1/twitter/tweet` - Post a single tweet (alias)
+- `POST /v1/twitter/thread` - Post a Twitter thread with automatic numbering
+- `POST /v1/twitter/publish` - Publish project content to Twitter (single tweet or thread)
+
 ## Example Usage
 
 ### Create a new source
@@ -88,9 +96,41 @@ curl -X GET http://localhost:3001/v1/stats/usage
 curl -X GET "http://localhost:3001/v1/analytics/topics?status=accepted"
 ```
 
+### Post a Twitter thread
+```bash
+curl -X POST http://localhost:3001/v1/twitter/thread \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tweets": [
+      "First tweet in the thread about exciting news!",
+      "Second tweet with more details and context.",
+      "Final tweet wrapping up the discussion."
+    ],
+    "hashtags": ["AI", "Twitter", "TechNews"]
+  }'
+```
+
+### Publish project content to Twitter
+```bash
+curl -X POST http://localhost:3001/v1/twitter/publish \
+  -H "Content-Type: application/json" \
+  -d '{
+    "projectId": 1,
+    "content": "Check out our latest project update!",
+    "type": "tweet",
+    "hashtags": ["project", "update"]
+  }'
+```
+
 ## Features
 
 - ✅ Full CRUD operations for sources and projects
+- ✅ Twitter integration with thread posting capabilities
+- ✅ Automated content publishing to Twitter
+- ✅ Intelligent thread formatting with numbering
+- ✅ Hashtag management and optimization
+- ✅ Content management and analytics
+- ✅ Trend analysis and monitoring
 - ✅ Mock analytics data with realistic examples
 - ✅ Input validation and error handling
 - ✅ CORS enabled for frontend access
@@ -101,6 +141,9 @@ curl -X GET "http://localhost:3001/v1/analytics/topics?status=accepted"
 ## Architecture
 
 - **Framework**: Express.js 4.x
+- **Twitter Integration**: Custom Twitter service with thread support
+- **Content Management**: Automated content sourcing and processing
+- **Analytics Engine**: Trend analysis and performance tracking
 - **Data Storage**: In-memory JavaScript objects/arrays
 - **Validation**: Custom validation functions
 - **Error Handling**: Centralized error responses
@@ -111,6 +154,13 @@ curl -X GET "http://localhost:3001/v1/analytics/topics?status=accepted"
 ```
 src/
 ├── routes/          # API endpoint handlers
+│   ├── twitter.js   # Twitter integration endpoints
+│   ├── analytics.js # Analytics and trends
+│   └── ...         # Other route modules
+├── services/        # Business logic services
+│   ├── twitter.js   # Twitter posting service
+│   ├── trends-service.js # Trend analysis
+│   └── content.js   # Content management
 ├── data/            # In-memory data stores
 ├── utils/           # Helper functions
 └── app.js           # Express app configuration
@@ -118,7 +168,20 @@ src/
 
 ## Development Notes
 
-This is an MVP implementation using in-memory storage. Data will reset when the server restarts. For production use, integrate with a real database (PostgreSQL, MongoDB, etc.).
+This Twitter Agent backend is an MVP implementation using in-memory storage. Data will reset when the server restarts. 
+
+### Key Features:
+- **Twitter Thread Support**: Automatically formats and numbers threads
+- **Content Publishing**: Intelligent content distribution to Twitter
+- **Analytics Dashboard**: Real-time trend analysis and metrics
+- **Content Sourcing**: Automated content discovery and processing
+
+### Production Considerations:
+- Integrate with a real database (PostgreSQL, MongoDB, etc.)
+- Add Twitter API authentication and rate limiting
+- Implement content scheduling and automation
+- Add user authentication and authorization
+- Scale analytics processing for larger datasets
 
 ## Error Responses
 
