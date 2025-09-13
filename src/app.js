@@ -10,6 +10,7 @@ const deliveryRouter = require('./routes/delivery');
 const userRouter = require('./routes/user');
 const twitterRouter = require('./routes/twitter-simple');
 const contentRouter = require('./routes/content');
+const youtubeRouter = require('./routes/youtube');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -47,6 +48,7 @@ app.use('/v1/delivery', deliveryRouter);
 app.use('/v1/user', userRouter);
 app.use('/v1/twitter', twitterRouter);
 app.use('/v1/content', contentRouter);
+app.use('/v1/youtube', youtubeRouter);
 
 // 404 handler
 app.use('*', (req, res) => {
@@ -102,6 +104,12 @@ app.listen(PORT, () => {
   console.log('  POST   /v1/content/generate-drafts - Generate content drafts');
   console.log('  GET    /v1/content/drafts    - List content drafts');
   console.log('  GET    /v1/content/stats     - Content statistics');
+  console.log('  GET    /v1/youtube/status    - Check YouTube crawler status');
+  console.log('  POST   /v1/youtube/crawl     - Crawl specific YouTube channel');
+  console.log('  GET    /v1/youtube/channels  - List tracked YouTube channels');
+  console.log('  POST   /v1/youtube/channels  - Add new YouTube channel');
+  console.log('  GET    /v1/youtube/trends    - Get YouTube trending topics');
+  console.log('  POST   /v1/youtube/analyze   - Analyze multiple YouTube channels');
 });
 
 module.exports = app;

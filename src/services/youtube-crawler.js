@@ -20,12 +20,33 @@ class YouTubeCrawlerService {
   }
 
   /**
+   * Validate YouTube URL format
+   * @param {string} youtubeUrl - YouTube URL to validate
+   * @returns {boolean} - True if valid YouTube URL
+   */
+  isValidYouTubeUrl(youtubeUrl) {
+    if (!youtubeUrl || typeof youtubeUrl !== 'string') return false;
+    
+    const patterns = [
+      /youtube\.com\/@[\w-]+/,
+      /youtube\.com\/channel\/[\w-]+/,
+      /youtube\.com\/user\/[\w-]+/,
+      /youtube\.com\/c\/[\w-]+/
+    ];
+    
+    return patterns.some(pattern => pattern.test(youtubeUrl));
+  }
+
+  /**
    * Extract channel ID from YouTube URL
    * @param {string} youtubeUrl - YouTube channel URL
    * @returns {Promise<string>} - Channel ID
    */
   async extractChannelId(youtubeUrl) {
     try {
+      if (!this.isValidYouTubeUrl(youtubeUrl)) {
+        throw new Error('Invalid YouTube URL format');
+      }
       // Handle @username format
       if (youtubeUrl.includes('/@')) {
         const username = youtubeUrl.split('/@')[1].split('/')[0];
@@ -37,7 +58,12 @@ class YouTubeCrawlerService {
           'techcrunch': 'UCCjyq_K1Xwfg8Lndy7lKMpA',
           'ycombinator': 'UCcefcZRL2oaA_uBNeo5UOWg',
           'mkbhd': 'UCBJycsmduvYEL83R_U4JriQ',
-          'veritasium': 'UCHnyfMqiRRG1u-2MsSQLbXA'
+          'veritasium': 'UCHnyfMqiRRG1u-2MsSQLbXA',
+          'fireship': 'UCsBjURrPoezykLs9EqgamOA',
+          '3blue1brown': 'UCYO_jab_esuFRV4b17AJtAw',
+          'codewitharry': 'UCeVMnSShP_Iviwkknt83cww',
+          'freecodecamp': 'UC8butISFwT-Wl7EV0hUK0BQ',
+          'programmingwithmosh': 'UCWv7vMbMWH4-V0ZXdmDpPBA'
         };
 
         const channelId = channelMappings[username.toLowerCase()];
@@ -85,11 +111,18 @@ class YouTubeCrawlerService {
   /**
    * Crawl YouTube channel using RSS feed
    * @param {string} youtubeUrl - YouTube channel URL
+   * @param {Object} options - Crawling options
    * @returns {Promise<Object>} - Crawl results
    */
-  async crawlYouTubeChannel(youtubeUrl) {
+  async crawlYouTubeChannel(youtubeUrl, options = {}) {
+    const { maxVideos = 20, includeKeywords = true, retryCount = 2 } = options;
+    
     try {
       console.log(`🔍 Crawling YouTube channel: ${youtubeUrl}`);
+      
+      if (!this.isValidYouTubeUrl(youtubeUrl)) {
+        throw new Error('Invalid YouTube URL format. Supported formats: @username, /channel/ID, /user/USERNAME, /c/NAME');
+      }
       
       // Extract channel ID
       const channelId = await this.extractChannelId(youtubeUrl);
@@ -98,10 +131,42 @@ class YouTubeCrawlerService {
       const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
       console.log(`📡 Fetching RSS feed: ${rssUrl}`);
 
-      // Fetch RSS feed
-      const response = await fetch(rssUrl);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      // Fetch RSS feed with retry logic
+      let response;
+      let attempt = 0;
+      
+      while (attempt < retryCount) {
+        try {
+          response = await fetch(rssUrl, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (compatible; TwitterAgent/1.0; +https://example.com/bot)'
+            },
+            timeout: 10000
+          });
+          
+          if (response.ok) break;
+          
+          if (response.status === 404) {
+            throw new Error(`YouTube channel not found or RSS feed unavailable (${response.status})`);
+          }
+          
+          if (response.status === 403) {
+            throw new Error(`Access denied to YouTube RSS feed (${response.status})`);
+          }
+          
+          throw new Error(`HTTP error! status: ${response.status}`);
+          
+        } catch (error) {
+          attempt++;
+          console.log(`⚠️ Attempt ${attempt}/${retryCount} failed: ${error.message}`);
+          
+          if (attempt >= retryCount) {
+            throw error;
+          }
+          
+          // Wait before retry
+          await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+        }
       }
 
       const xmlData = await response.text();
@@ -126,17 +191,30 @@ class YouTubeCrawlerService {
       console.log(`✅ Successfully crawled ${channelName}: ${entries.length} videos found`);
 
       // Process video entries
-      const videos = entries.slice(0, 20).map((entry, index) => ({
-        id: entry.id?.split(':')[2] || `video_${index}`,
-        title: entry.title || 'Untitled Video',
-        description: entry['media:group']?.['media:description'] || '',
-        publishedDate: entry.published || new Date().toISOString(),
-        thumbnailUrl: entry['media:group']?.['media:thumbnail']?.['@_url'] || '',
-        videoUrl: entry.link?.['@_href'] || '',
-        channelName: entry.author?.name || channelName,
-        viewCount: Math.floor(Math.random() * 100000) + 1000, // Mock view count
-        keywords: this.extractKeywords(entry.title + ' ' + (entry['media:group']?.['media:description'] || ''))
-      }));
+      const videos = entries.slice(0, maxVideos).map((entry, index) => {
+        const videoId = entry.id?.split(':')[2] || `video_${index}`;
+        const title = entry.title || 'Untitled Video';
+        const description = entry['media:group']?.['media:description'] || '';
+        
+        const video = {
+          id: videoId,
+          title: title,
+          description: description,
+          publishedDate: entry.published || new Date().toISOString(),
+          thumbnailUrl: entry['media:group']?.['media:thumbnail']?.['@_url'] || '',
+          videoUrl: entry.link?.['@_href'] || `https://youtube.com/watch?v=${videoId}`,
+          channelName: entry.author?.name || channelName,
+          viewCount: Math.floor(Math.random() * 100000) + 1000, // Mock view count
+          duration: entry['media:group']?.['media:content']?.['@_duration'] || 'Unknown'
+        };
+        
+        // Add keywords if requested
+        if (includeKeywords) {
+          video.keywords = this.extractKeywords(title + ' ' + description);
+        }
+        
+        return video;
+      });
 
       // Log latest video for verification
       if (videos.length > 0) {

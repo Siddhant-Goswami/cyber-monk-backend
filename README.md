@@ -77,6 +77,23 @@ Both trends endpoints return the same shape:
 - `POST /v1/twitter/thread` - Post a Twitter thread with automatic numbering
 - `POST /v1/twitter/publish` - Publish project content to Twitter (single tweet or thread)
 
+### YouTube Integration
+- `GET /v1/youtube/status` - Check YouTube crawler status and capabilities
+- `POST /v1/youtube/crawl` - Crawl specific YouTube channel for content analysis
+- `GET /v1/youtube/channels` - List all tracked YouTube channels
+- `POST /v1/youtube/channels` - Add new YouTube channel to tracking system
+- `GET /v1/youtube/trends` - Get trending topics from YouTube content
+- `POST /v1/youtube/analyze` - Analyze content from multiple YouTube channels
+
+### Content Management with YouTube
+- `POST /v1/content/from-youtube` - Generate content from YouTube video analysis
+- `POST /v1/content/youtube-to-twitter` - Convert YouTube content to Twitter-ready posts
+- `GET /v1/content/youtube-inspiration` - Get content inspiration from trending YouTube videos
+
+### Advanced Analytics
+- `GET /v1/analytics/youtube-insights` - Get detailed analytics from YouTube data
+- `GET /v1/analytics/cross-platform` - Compare trends across YouTube, Twitter, and other sources
+
 ## Example Usage
 
 ### Create a new source
@@ -122,28 +139,91 @@ curl -X POST http://localhost:3001/v1/twitter/publish \
   }'
 ```
 
+### Crawl a YouTube channel
+```bash
+curl -X POST http://localhost:3001/v1/youtube/crawl \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://youtube.com/@100xengineers"
+  }'
+```
+
+### Generate content from YouTube videos
+```bash
+curl -X POST http://localhost:3001/v1/content/from-youtube \
+  -H "Content-Type: application/json" \
+  -d '{
+    "youtube_urls": ["https://youtube.com/@100xengineers"],
+    "content_type": "thread",
+    "target_platform": "twitter"
+  }'
+```
+
+### Convert YouTube content to Twitter posts
+```bash
+curl -X POST http://localhost:3001/v1/content/youtube-to-twitter \
+  -H "Content-Type: application/json" \
+  -d '{
+    "youtube_url": "https://youtube.com/@techcrunch",
+    "post_type": "thread",
+    "include_hashtags": true
+  }'
+```
+
+### Analyze multiple YouTube channels
+```bash
+curl -X POST http://localhost:3001/v1/youtube/analyze \
+  -H "Content-Type: application/json" \
+  -d '{
+    "channels": [
+      "https://youtube.com/@100xengineers",
+      "https://youtube.com/@techcrunch"
+    ],
+    "keywords": ["AI", "startup"],
+    "timeframe": "7d"
+  }'
+```
+
+### Get YouTube analytics insights
+```bash
+curl -X GET "http://localhost:3001/v1/analytics/youtube-insights?channel_urls=https://youtube.com/@100xengineers&timeframe=7d"
+```
+
 ## Features
 
 - ✅ Full CRUD operations for sources and projects
-- ✅ Twitter integration with thread posting capabilities
-- ✅ Automated content publishing to Twitter
-- ✅ Intelligent thread formatting with numbering
-- ✅ Hashtag management and optimization
-- ✅ Content management and analytics
-- ✅ Trend analysis and monitoring
-- ✅ Mock analytics data with realistic examples
-- ✅ Input validation and error handling
-- ✅ CORS enabled for frontend access
-- ✅ In-memory data persistence (during server runtime)
-- ✅ Request logging
-- ✅ Proper HTTP status codes
+- ✅ **Twitter Integration**
+  - Thread posting with automatic numbering
+  - Automated content publishing
+  - Hashtag management and optimization
+- ✅ **YouTube Integration**
+  - Channel crawling via RSS feeds
+  - Video content analysis and keyword extraction
+  - Trend detection across multiple channels
+  - Content inspiration from trending videos
+- ✅ **Content Generation Pipeline**
+  - YouTube-to-Twitter content conversion
+  - Multi-format content generation (tweets, threads, articles)
+  - Automated hashtag suggestions
+- ✅ **Advanced Analytics**
+  - Cross-platform trend analysis
+  - YouTube content insights
+  - Publishing pattern analysis
+  - Keyword performance tracking
+- ✅ **Technical Features**
+  - Input validation and error handling
+  - CORS enabled for frontend access
+  - In-memory data persistence (during server runtime)
+  - Request logging and monitoring
+  - Proper HTTP status codes
 
 ## Architecture
 
 - **Framework**: Express.js 4.x
 - **Twitter Integration**: Custom Twitter service with thread support
+- **YouTube Integration**: RSS-based crawler with trend analysis
 - **Content Management**: Automated content sourcing and processing
-- **Analytics Engine**: Trend analysis and performance tracking
+- **Analytics Engine**: Multi-platform trend analysis and performance tracking
 - **Data Storage**: In-memory JavaScript objects/arrays
 - **Validation**: Custom validation functions
 - **Error Handling**: Centralized error responses
@@ -159,6 +239,7 @@ src/
 │   └── ...         # Other route modules
 ├── services/        # Business logic services
 │   ├── twitter.js   # Twitter posting service
+│   ├── youtube-crawler.js # YouTube content crawling
 │   ├── trends-service.js # Trend analysis
 │   └── content.js   # Content management
 ├── data/            # In-memory data stores
@@ -172,16 +253,26 @@ This Twitter Agent backend is an MVP implementation using in-memory storage. Dat
 
 ### Key Features:
 - **Twitter Thread Support**: Automatically formats and numbers threads
-- **Content Publishing**: Intelligent content distribution to Twitter
-- **Analytics Dashboard**: Real-time trend analysis and metrics
-- **Content Sourcing**: Automated content discovery and processing
+- **YouTube Integration**: RSS-based channel crawling and content analysis
+- **Cross-Platform Content**: Convert YouTube content to Twitter-ready posts
+- **Analytics Dashboard**: Multi-platform trend analysis and insights
+- **Content Pipeline**: Automated content discovery, processing, and distribution
 
 ### Production Considerations:
 - Integrate with a real database (PostgreSQL, MongoDB, etc.)
 - Add Twitter API authentication and rate limiting
-- Implement content scheduling and automation
-- Add user authentication and authorization
+- Implement YouTube API v3 for enhanced data access
+- Add content scheduling and automation
+- Implement user authentication and authorization
 - Scale analytics processing for larger datasets
+- Add content moderation and filtering
+- Implement webhook support for real-time updates
+
+### Supported YouTube URL Formats:
+- `https://youtube.com/@username`
+- `https://youtube.com/channel/CHANNEL_ID`
+- `https://youtube.com/user/USERNAME`
+- `https://youtube.com/c/CHANNEL_NAME`
 
 ## Error Responses
 
